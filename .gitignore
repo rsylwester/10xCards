@@ -35,6 +35,10 @@ pnpm-debug.log*
 supabase/volumes/
 supabase/.temp/
 
+# Testing
+coverage/
+*.lcov
+
 # Temp files
 *.tmp
 *.temp
