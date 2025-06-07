@@ -16,9 +16,25 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.local
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# VSCode/Cursor settings (optional - keep if you want to share)
+.vscode/
+.cursor/
+
+# Development history
+.history/
+
+# Supabase local data (keep migrations, exclude volumes)
+supabase/volumes/
+supabase/.temp/
+
+# Temp files
+*.tmp
+*.temp
