@@ -5,6 +5,7 @@
 FlashcardAI to aplikacja webowa pomagająca dorosłym osobom uczącym się języka angielskiego na poziomie B2/C1 w tworzeniu i nauce fiszek. Aplikacja wykorzystuje sztuczną inteligencję (OpenAI 4o) do automatycznego generowania fiszek na podstawie wprowadzonego tekstu, rozwiązując problem czasochłonności manualnego tworzenia wysokiej jakości fiszek edukacyjnych.
 
 Główne funkcjonalności aplikacji:
+
 - Generowanie fiszek przez AI na podstawie wprowadzonego tekstu
 - Manualne tworzenie fiszek
 - Przeglądanie, edycja i usuwanie fiszek
@@ -12,6 +13,7 @@ Główne funkcjonalności aplikacji:
 - Prosty system kont użytkowników
 
 Stos technologiczny:
+
 - Frontend: Astro 5 z React 19 dla komponentów interaktywnych, TypeScript 5, Tailwind 4, Shadcn/ui
 - Backend: Supabase (autentykacja)
 - AI: OpenRouter.ai dla komunikacji z modelami OpenAI 4o
@@ -28,6 +30,7 @@ Główne problemy, które rozwiązuje aplikacja:
 3. Brak motywacji do regularnej nauki - Tradycyjne metody powtórek mogą być monotonne i zniechęcające.
 
 FlashcardAI rozwiązuje te problemy poprzez:
+
 - Automatyczne generowanie fiszek z wykorzystaniem AI, co drastycznie skraca czas przygotowania materiałów
 - Inteligentne wybieranie słownictwa na poziomie B2/C1 z dowolnego tekstu
 - Angażujący format quizu z natychmiastową informacją zwrotną
@@ -139,9 +142,11 @@ FlashcardAI rozwiązuje te problemy poprzez:
 ### Autentykacja
 
 #### US-001: Rejestracja nowego użytkownika
+
 Jako nowy użytkownik, chcę utworzyć konto, aby móc zapisywać swoje fiszki.
 
 Kryteria akceptacji:
+
 - Formularz rejestracji zawiera pola: email i hasło
 - System sprawdza, czy email jest poprawny i unikatowy
 - System wymaga hasła o minimalnej długości 8 znaków
@@ -150,9 +155,11 @@ Kryteria akceptacji:
 - System automatycznie tworzy domyślny zestaw fiszek dla nowego użytkownika
 
 #### US-002: Logowanie użytkownika
+
 Jako zarejestrowany użytkownik, chcę zalogować się do aplikacji, aby uzyskać dostęp do swoich fiszek.
 
 Kryteria akceptacji:
+
 - Formularz logowania zawiera pola: email i hasło
 - System weryfikuje poprawność danych
 - W przypadku błędnych danych system wyświetla stosowny komunikat
@@ -160,18 +167,22 @@ Kryteria akceptacji:
 - Sesja użytkownika jest zapamiętywana przez określony czas
 
 #### US-003: Resetowanie hasła
+
 Jako użytkownik, który zapomniał hasła, chcę je zresetować, aby odzyskać dostęp do konta.
 
 Kryteria akceptacji:
+
 - Link "Zapomniałem hasła" jest dostępny na stronie logowania
 - Użytkownik może podać email, na który zostanie wysłany link do resetowania hasła
 - Po kliknięciu w link użytkownik może ustawić nowe hasło
 - System potwierdza zmianę hasła
 
 #### US-004: Logowanie użytkownika demonstracyjnego
+
 Jako deweloper lub osoba testująca aplikację, chcę móc zalogować się na konto demonstracyjne, aby sprawdzić funkcjonalność.
 
 Kryteria akceptacji:
+
 - Konto demo@example.com z hasłem "demo" jest dostępne w systemie
 - Użytkownik demonstracyjny ma dostęp do wszystkich funkcji aplikacji
 - Konto demonstracyjne zawiera przykładowe fiszki gotowe do nauki
@@ -180,9 +191,11 @@ Kryteria akceptacji:
 ### Inicjalizacja danych użytkownika
 
 #### US-005: Automatyczne tworzenie domyślnych fiszek
+
 Jako nowy użytkownik, chcę mieć dostęp do podstawowych fiszek od razu po rejestracji, aby móc rozpocząć naukę.
 
 Kryteria akceptacji:
+
 - System automatycznie tworzy zestaw domyślnych fiszek dla każdego nowego użytkownika
 - Domyślne fiszki zawierają słownictwo na poziomie B2/C1
 - Zestaw zawiera co najmniej 20 różnorodnych fiszek
@@ -192,9 +205,11 @@ Kryteria akceptacji:
 ### Generowanie fiszek przez AI
 
 #### US-006: Wklejanie tekstu do generowania fiszek
+
 Jako użytkownik, chcę wkleić tekst angielski, aby AI wygenerowało fiszki.
 
 Kryteria akceptacji:
+
 - Widok zawiera pole tekstowe do wklejenia tekstu
 - System wyświetla licznik słów w czasie rzeczywistym
 - System informuje o limicie 1500 słów
@@ -202,9 +217,11 @@ Kryteria akceptacji:
 - System wyświetla wskaźnik ładowania podczas generowania
 
 #### US-007: Otrzymywanie wygenerowanych fiszek
+
 Jako użytkownik, chcę zobaczyć listę fiszek wygenerowanych przez AI, aby wybrać te, które chcę zachować.
 
 Kryteria akceptacji:
+
 - System wyświetla do 10 wygenerowanych fiszek
 - Każda fiszka prezentuje angielskie słowo/frazę i polskie tłumaczenie
 - Każda fiszka ma opcje edycji i odrzucenia
@@ -212,36 +229,44 @@ Kryteria akceptacji:
 - Przycisk "Dodaj fiszki" jest widoczny na dole listy
 
 #### US-008: Edytowanie wygenerowanych fiszek
+
 Jako użytkownik, chcę edytować wygenerowane fiszki, aby dostosować je do moich potrzeb.
 
 Kryteria akceptacji:
+
 - Kliknięcie przycisku edycji otwiera formularz edycji
 - Formularz zawiera pola do edycji angielskiego słowa/frazy i polskiego tłumaczenia
 - Użytkownik może anulować edycję lub zapisać zmiany
 - Zmodyfikowane fiszki są wizualnie oznaczone
 
 #### US-009: Odrzucanie niepotrzebnych fiszek
+
 Jako użytkownik, chcę odrzucić niektóre wygenerowane fiszki, aby zachować tylko te, które uważam za przydatne.
 
 Kryteria akceptacji:
+
 - Każda fiszka ma przycisk odrzucenia
 - Odrzucone fiszki są usuwane z listy lub wizualnie oznaczone jako odrzucone
 - Odrzucone fiszki nie są dodawane do kolekcji użytkownika po kliknięciu "Dodaj fiszki"
 - Użytkownik może odrzucić wszystkie fiszki
 
 #### US-010: Akceptacja i zapisywanie fiszek
+
 Jako użytkownik, chcę zatwierdzić wybrane fiszki, aby dodać je do mojej kolekcji.
 
 Kryteria akceptacji:
+
 - Przycisk "Dodaj fiszki" dodaje wszystkie nieodrzucone fiszki do kolekcji użytkownika
 - System wyświetla potwierdzenie dodania fiszek
 - System informuje o liczbie dodanych fiszek
 - Po dodaniu fiszek użytkownik może wrócić do widoku generowania lub przejść do widoku przeglądania
 
 #### US-011: Obsługa zbyt długiego tekstu
+
 Jako użytkownik, chcę otrzymać komunikat, jeśli mój tekst przekracza limit, aby zrozumieć ograniczenia systemu.
 
 Kryteria akceptacji:
+
 - System wyświetla informację, jeśli tekst przekracza 1500 słów
 - Komunikat informuje, że tylko pierwsze 1500 słów zostanie wykorzystane
 - Użytkownik może kontynuować z okrojonym tekstem lub zmodyfikować wprowadzony tekst
@@ -250,9 +275,11 @@ Kryteria akceptacji:
 ### Manualne tworzenie fiszek
 
 #### US-012: Dodawanie własnej fiszki
+
 Jako użytkownik, chcę manualnie dodać własną fiszkę, gdy nie chcę korzystać z AI.
 
 Kryteria akceptacji:
+
 - Widok zawiera formularz z polami: angielskie słowo/fraza i polskie tłumaczenie
 - Przycisk "Dodaj fiszkę" zapisuje fiszkę do kolekcji
 - System waliduje, czy oba pola są wypełnione
@@ -262,9 +289,11 @@ Kryteria akceptacji:
 ### Zarządzanie fiszkami
 
 #### US-013: Przeglądanie zapisanych fiszek
+
 Jako użytkownik, chcę przeglądać wszystkie swoje fiszki, aby ocenić swoją kolekcję.
 
 Kryteria akceptacji:
+
 - Widok wyświetla listę wszystkich zapisanych fiszek
 - Każda fiszka pokazuje angielskie słowo/frazę i polskie tłumaczenie
 - Przy każdej fiszce dostępne są opcje edycji i usunięcia
@@ -272,9 +301,11 @@ Kryteria akceptacji:
 - Fiszki są wyświetlane od najnowszych do najstarszych
 
 #### US-014: Edytowanie zapisanych fiszek
+
 Jako użytkownik, chcę edytować zapisane fiszki, aby poprawić błędy lub zaktualizować treść.
 
 Kryteria akceptacji:
+
 - Kliknięcie przycisku edycji przy fiszce otwiera formularz edycji
 - Formularz zawiera pola do edycji angielskiego słowa/frazy i polskiego tłumaczenia
 - Użytkownik może anulować edycję lub zapisać zmiany
@@ -282,9 +313,11 @@ Kryteria akceptacji:
 - Zaktualizowana fiszka jest natychmiast widoczna na liście
 
 #### US-015: Usuwanie fiszek
+
 Jako użytkownik, chcę usuwać fiszki, których już nie potrzebuję.
 
 Kryteria akceptacji:
+
 - Każda fiszka ma przycisk usunięcia
 - Kliknięcie przycisku usunięcia wyświetla prośbę o potwierdzenie
 - Po potwierdzeniu fiszka jest usuwana z kolekcji
@@ -294,9 +327,11 @@ Kryteria akceptacji:
 ### Quiz i nauka
 
 #### US-016: Rozpoczynanie quizu
+
 Jako użytkownik, chcę rozpocząć quiz, aby uczyć się słówek.
 
 Kryteria akceptacji:
+
 - Widok quizu jest domyślnie wyświetlany po zalogowaniu
 - System losowo wybiera fiszkę z kolekcji użytkownika
 - System wyświetla angielskie słowo/frazę
@@ -304,9 +339,11 @@ Kryteria akceptacji:
 - Quiz można rozpocząć tylko jeśli użytkownik ma przynajmniej jedną fiszkę
 
 #### US-017: Odpowiadanie na pytania w quizie
+
 Jako użytkownik, chcę widzieć angielskie słowo i wybierać spośród 4 opcji polskich tłumaczeń.
 
 Kryteria akceptacji:
+
 - System wyświetla angielskie słowo/frazę jako pytanie
 - Pod pytaniem wyświetlane są cztery opcje tłumaczenia
 - Tylko jedna opcja jest poprawna
@@ -314,9 +351,11 @@ Kryteria akceptacji:
 - Opcje są wyświetlane w losowej kolejności
 
 #### US-018: Otrzymywanie informacji zwrotnej
+
 Jako użytkownik, chcę otrzymać natychmiastową informację zwrotną o moim wyborze, aby wiedzieć, czy odpowiedziałem poprawnie.
 
 Kryteria akceptacji:
+
 - Po wybraniu odpowiedzi system podświetla ją na zielono, jeśli jest poprawna
 - Jeśli odpowiedź jest niepoprawna, system podświetla ją na czerwono i pokazuje poprawną odpowiedź na zielono
 - Przycisk "Dalej" staje się aktywny po wybraniu odpowiedzi
@@ -324,9 +363,11 @@ Kryteria akceptacji:
 - System nie przechodzi automatycznie do następnego pytania
 
 #### US-019: Przechodzenie do następnej fiszki
+
 Jako użytkownik, chcę przejść do następnej fiszki, aby kontynuować naukę.
 
 Kryteria akceptacji:
+
 - Przycisk "Dalej" jest widoczny po wybraniu odpowiedzi
 - Kliknięcie przycisku "Dalej" ładuje nową, losowo wybraną fiszkę
 - System generuje nowy zestaw odpowiedzi dla nowej fiszki
@@ -336,9 +377,11 @@ Kryteria akceptacji:
 ### Interfejs i nawigacja
 
 #### US-020: Nawigacja między widokami
+
 Jako użytkownik, chcę mieć dostęp do nawigacji, aby łatwo przełączać się między różnymi widokami aplikacji.
 
 Kryteria akceptacji:
+
 - Menu nawigacyjne zawiera opcje: "Ucz się" (quiz), "Dodaj fiszki AI", "Dodaj fiszkę", "Przeglądaj fiszki"
 - Aktualna lokalizacja jest wyróżniona w menu
 - Przełączanie między widokami odbywa się bez przeładowania strony
@@ -346,9 +389,11 @@ Kryteria akceptacji:
 - Menu jest dostępne na wszystkich ekranach po zalogowaniu
 
 #### US-021: Korzystanie z ciemnego motywu
+
 Jako użytkownik, chcę korzystać z ciemnego motywu, aby zmniejszyć zmęczenie oczu.
 
 Kryteria akceptacji:
+
 - Aplikacja domyślnie używa ciemnego motywu
 - Wszystkie elementy interfejsu są czytelne w ciemnym motywie
 - Kontrast kolorów spełnia standardy dostępności
@@ -356,9 +401,11 @@ Kryteria akceptacji:
 - Komunikaty i powiadomienia są zgodne z motywem
 
 #### US-022: Korzystanie z responsywnego interfejsu
+
 Jako użytkownik mobilny, chcę korzystać z responsywnego interfejsu, aby używać aplikacji na różnych urządzeniach.
 
 Kryteria akceptacji:
+
 - Interfejs dostosowuje się do różnych rozmiarów ekranów
 - Wszystkie funkcje są dostępne zarówno na urządzeniach mobilnych, jak i desktopowych
 - Elementy interaktywne mają odpowiedni rozmiar na ekranach dotykowych
@@ -368,9 +415,11 @@ Kryteria akceptacji:
 ### Środowisko deweloperskie
 
 #### US-023: Uruchomienie aplikacji lokalnie
+
 Jako deweloper, chcę móc uruchomić aplikację lokalnie z pełną funkcjonalnością, aby rozwijać i testować kod.
 
 Kryteria akceptacji:
+
 - Wszystkie komponenty aplikacji (frontend, backend, baza danych) działają lokalnie
 - Autentykacja użytkowników działa w środowisku lokalnym
 - Integracja z API AI jest skonfigurowana i funkcjonalna
@@ -378,9 +427,11 @@ Kryteria akceptacji:
 - Wszystkie zmienne środowiskowe są odpowiednio skonfigurowane
 
 #### US-024: Dostęp do danych demonstracyjnych
+
 Jako deweloper lub tester, chcę mieć dostęp do danych demonstracyjnych, aby móc prezentować funkcjonalność aplikacji.
 
 Kryteria akceptacji:
+
 - Użytkownik demo@example.com z hasłem "demo" jest dostępny w każdym środowisku
 - Konto demonstracyjne zawiera reprezentatywny zestaw fiszek
 - Dane demonstracyjne przedstawiają różne scenariusze użycia
@@ -391,6 +442,7 @@ Kryteria akceptacji:
 ### 7.1 Wskaźniki produktowe
 
 1. 75% fiszek wygenerowanych przez AI jest akceptowanych przez użytkowników
+
    - Mierzone przez stosunek zaakceptowanych fiszek do wszystkich wygenerowanych
    - Modyfikacja fiszki nie jest liczona ani jako akceptacja, ani jako odrzucenie
    - Monitorowane przez logi generacji w bazie danych
@@ -403,10 +455,12 @@ Kryteria akceptacji:
 ### 7.2 Metryki techniczne
 
 1. Czas generowania fiszek
+
    - Średni czas od wklejenia tekstu do otrzymania wygenerowanych fiszek
    - Celem jest utrzymanie tego czasu poniżej 5 sekund dla tekstów o długości do 1500 słów
 
 2. Dostępność systemu
+
    - Uptime aplikacji na poziomie 99%
    - Monitorowanie błędów i problemów z API
 
@@ -417,10 +471,12 @@ Kryteria akceptacji:
 ### 7.3 Metryki user experience
 
 1. Częstotliwość korzystania
+
    - Średnia liczba sesji na użytkownika w tygodniu
    - Średni czas spędzony w aplikacji
 
 2. Ukończenie procesu generowania
+
    - Procent rozpoczętych procesów generowania, które kończą się dodaniem fiszek
    - Monitoring porzuceń na poszczególnych etapach procesu
 
@@ -431,6 +487,7 @@ Kryteria akceptacji:
 ### 7.4 Metryki deweloperskie
 
 1. Czas setup'u środowiska lokalnego
+
    - Maksymalny czas potrzebny do uruchomienia aplikacji lokalnie: 30 minut
    - Mierzony od sklonowania repozytorium do pierwszego udanego logowania
 
