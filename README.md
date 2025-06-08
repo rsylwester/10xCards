@@ -12,6 +12,33 @@ An AI-powered flashcard application for English B2/C1 level learners. Generate f
 - 🌙 **Dark Theme** - Modern, responsive design optimized for learning
 - 🎯 **B2/C1 Focus** - Specifically designed for advanced English learners
 
+## Screenshots
+
+### Login Interface
+
+![Login Page](screenshots/01-login-page.png)
+_Clean authentication interface with demo account option_
+
+### Interactive Quiz
+
+![Quiz Interface](screenshots/02-quiz-interface.png)
+_Test your vocabulary knowledge with multiple-choice questions and real-time scoring_
+
+### AI Flashcard Generation
+
+![AI Flashcards Generator](screenshots/03-ai-flashcards-generator.png)
+_Paste English text and let AI extract B2/C1 vocabulary automatically_
+
+### Manual Flashcard Creation
+
+![Add Flashcard Manual](screenshots/04-add-flashcard-manual.png)
+_Create custom flashcards with English-Polish translations_
+
+### Flashcard Management
+
+![Browse Flashcards](screenshots/05-browse-flashcards.png)
+_Browse and manage your collection of 25+ vocabulary cards with edit/delete options_
+
 ## Tech Stack
 
 - [Astro](https://astro.build/) v5.5.5 - Modern web framework
