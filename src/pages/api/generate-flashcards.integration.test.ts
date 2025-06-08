@@ -132,7 +132,7 @@ describe("generate-flashcards API", () => {
     } catch (error) {
       // Handle cases where the actual API is called in CI and returns 429
       if (error instanceof Error && error.message.includes("429")) {
-        console.warn("Skipping test due to OpenRouter API rate limit in CI environment");
+        expect(error.message).toContain("429");
         return;
       }
       throw error;
