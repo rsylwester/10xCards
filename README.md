@@ -152,7 +152,7 @@ supabase db seed
 npm run dev
 ```
 
-Visit `http://localhost:4321` and sign in with:
+Visit `http://localhost:3000` and sign in with:
 
 - **Email**: `demo@example.com`
 - **Password**: `demopass`
