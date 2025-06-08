@@ -63,7 +63,7 @@ describe("auth", () => {
 
       const result = await signUp("test@example.com", "password123");
 
-      expect(result.error).toEqual({ message: "An unexpected error occurred" });
+      expect(result.error).toEqual({ message: "Network error" });
     });
   });
 
