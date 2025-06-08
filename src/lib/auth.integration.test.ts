@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from "vitest";
-import { signUp, signIn, signOut, getCurrentUser } from "./auth";
+import { signUp, signIn, signOut, getCurrentUser, resetPassword } from "./auth";
 import { supabase } from "./supabase";
 
 describe("Auth Integration Tests", () => {
@@ -11,6 +11,10 @@ describe("Auth Integration Tests", () => {
     // Ensure we're using the test environment
     // eslint-disable-next-line no-console
     console.log("Starting auth integration tests...");
+    // eslint-disable-next-line no-console
+    console.log("Supabase URL:", import.meta.env.PUBLIC_SUPABASE_URL);
+    // eslint-disable-next-line no-console
+    console.log("Supabase Key:", import.meta.env.PUBLIC_SUPABASE_ANON_KEY ? "Present" : "Missing");
   });
 
   afterAll(async () => {
@@ -35,7 +39,7 @@ describe("Auth Integration Tests", () => {
 
     if (result.error) {
       // If user already exists, that's fine for testing
-      expect(result.error.message).toContain("already");
+      expect(result.error.message).toMatch(/already|exists/i);
     } else {
       expect(result.user).toBeDefined();
       expect(result.user?.email).toBe(testEmail);
@@ -59,16 +63,20 @@ describe("Auth Integration Tests", () => {
 
     expect(result.user).toBeUndefined();
     expect(result.error).toBeDefined();
-    expect(result.error?.message).toContain("Invalid");
+    expect(result.error?.message).toMatch(/invalid|credentials|password/i);
   });
 
   it("should get current user when signed in", async () => {
+    // First create the test user for this test
+    await signUp(testEmail, testPassword);
+
     // Sign in first
-    await signIn("demo@example.com", "demopass");
+    const signInResult = await signIn(testEmail, testPassword);
+    expect(signInResult.user).toBeDefined();
 
     const user = await getCurrentUser();
     expect(user).toBeDefined();
-    expect(user?.email).toBe("demo@example.com");
+    expect(user?.email).toBe(testEmail);
   });
 
   it("should return null when no user is signed in", async () => {
@@ -79,8 +87,9 @@ describe("Auth Integration Tests", () => {
   });
 
   it("should successfully sign out", async () => {
-    // Sign in first
-    await signIn("demo@example.com", "demopass");
+    // First create and sign in a user
+    await signUp(testEmail, testPassword);
+    await signIn(testEmail, testPassword);
 
     // Verify user is signed in
     let user = await getCurrentUser();

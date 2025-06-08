@@ -5,7 +5,7 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     globals: true,
-    setupFiles: ["./src/test/setup.ts", "./src/test/integration-setup.ts"],
+    setupFiles: ["./src/test/integration-setup.ts"],
     testTimeout: 30000,
     include: ["src/**/*.integration.{test,spec}.{js,ts,jsx,tsx}"],
     exclude: ["node_modules/", "dist/", "electrical-ephemera/"],

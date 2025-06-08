@@ -27,8 +27,8 @@ export async function signUp(email: string, password: string): Promise<AuthResul
     }
 
     return { user: data.user };
-  } catch {
-    return { error: { message: "An unexpected error occurred" } };
+  } catch (error) {
+    return { error: { message: error instanceof Error ? error.message : "An unexpected error occurred" } };
   }
 }
 
@@ -44,8 +44,8 @@ export async function signIn(email: string, password: string): Promise<AuthResul
     }
 
     return { user: data.user };
-  } catch {
-    return { error: { message: "An unexpected error occurred" } };
+  } catch (error) {
+    return { error: { message: error instanceof Error ? error.message : "An unexpected error occurred" } };
   }
 }
 
@@ -58,8 +58,8 @@ export async function signOut(): Promise<{ error?: AuthError }> {
     }
 
     return {};
-  } catch {
-    return { error: { message: "An unexpected error occurred" } };
+  } catch (error) {
+    return { error: { message: error instanceof Error ? error.message : "An unexpected error occurred" } };
   }
 }
 
@@ -72,8 +72,8 @@ export async function resetPassword(email: string): Promise<{ error?: AuthError 
     }
 
     return {};
-  } catch {
-    return { error: { message: "An unexpected error occurred" } };
+  } catch (error) {
+    return { error: { message: error instanceof Error ? error.message : "An unexpected error occurred" } };
   }
 }
 
