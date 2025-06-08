@@ -1,124 +1,57 @@
 -- Seed file for FlashcardAI demo data
--- This creates the demo user and default flashcards
+-- This creates default flashcards for any existing demo user
 
--- Insert demo user (password: demopass)
--- The password hash is generated for 'demopass' using Supabase Auth
-INSERT INTO auth.users (
-    instance_id,
-    id,
-    aud,
-    role,
-    email,
-    encrypted_password,
-    email_confirmed_at,
-    invited_at,
-    confirmation_token,
-    confirmation_sent_at,
-    recovery_token,
-    recovery_sent_at,
-    email_change_token_new,
-    email_change,
-    email_change_sent_at,
-    last_sign_in_at,
-    raw_app_meta_data,
-    raw_user_meta_data,
-    is_super_admin,
-    created_at,
-    updated_at,
-    phone,
-    phone_confirmed_at,
-    phone_change,
-    phone_change_token,
-    phone_change_sent_at,
-    email_change_token_current,
-    email_change_confirm_status,
-    banned_until,
-    reauthentication_token,
-    reauthentication_sent_at,
-    is_sso_user,
-    deleted_at
-) VALUES (
-    '00000000-0000-0000-0000-000000000000',
-    'demo-user-uuid-1234-5678-90ab-cdef12345678',
-    'authenticated',
-    'authenticated',
-    'demo@example.com',
-    '$2a$10$9D4JKf.RdHjEsq2vzF7dGO7DI.8b7L6s5xaZOqqNdEXMJzKx9cKPy', -- password: demopass
-    NOW(),
-    NOW(),
-    '',
-    NOW(),
-    '',
-    NULL,
-    '',
-    '',
-    NULL,
-    NULL,
-    '{"provider": "email", "providers": ["email"]}',
-    '{}',
-    FALSE,
-    NOW(),
-    NOW(),
-    NULL,
-    NULL,
-    '',
-    '',
-    NULL,
-    '',
-    0,
-    NULL,
-    '',
-    NULL,
-    FALSE,
-    NULL
-) ON CONFLICT (id) DO NOTHING;
+-- Note: The demo user (demo@example.com) should be created manually or through the app
+-- This seed file only adds default flashcards for testing purposes
 
--- Insert identity for the demo user
-INSERT INTO auth.identities (
-    provider_id,
-    user_id,
-    identity_data,
-    provider,
-    last_sign_in_at,
-    created_at,
-    updated_at,
-    email
-) VALUES (
-    'demo@example.com',
-    'demo-user-uuid-1234-5678-90ab-cdef12345678',
-    '{"sub": "demo-user-uuid-1234-5678-90ab-cdef12345678", "email": "demo@example.com", "email_verified": true, "phone_verified": false}',
-    'email',
-    NOW(),
-    NOW(),
-    NOW(),
-    'demo@example.com'
-) ON CONFLICT (provider, provider_id) DO NOTHING;
-
--- Insert default flashcards for the demo user
-INSERT INTO public.flashcards (user_id, front, back, source) VALUES
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Sophisticated', 'Wyrafinowany, skomplikowany', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Prevalent', 'Powszechny, rozpowszechniony', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Comprehensive', 'Kompleksowy, wyczerpujący', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Substantial', 'Znaczny, istotny', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Elaborate', 'Rozbudowany, szczegółowy', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Inevitable', 'Nieunikniony, nieuchronny', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Profound', 'Głęboki, dogłębny', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Resilient', 'Odporny, elastyczny', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Compelling', 'Przekonujący, porywający', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Versatile', 'Wszechstronny, uniwersalny', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Feasible', 'Wykonalny, możliwy do zrealizowania', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Coherent', 'Spójny, logiczny', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Pragmatic', 'Pragmatyczny, praktyczny', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Ambiguous', 'Niejednoznaczny, dwuznaczny', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Innovative', 'Innowacyjny, nowatorski', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Discrepancy', 'Rozbieżność, niezgodność', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Hierarchy', 'Hierarchia, porządek', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Paradigm', 'Paradygmat, wzorzec', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Nevertheless', 'Niemniej jednak, mimo to', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Furthermore', 'Ponadto, co więcej', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Subsequently', 'Następnie, w dalszej kolejności', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Consequently', 'W konsekwencji, w rezultacie', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Presumably', 'Prawdopodobnie, przypuszczalnie', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Predominantly', 'Przeważnie, głównie', 'default'),
-    ('demo-user-uuid-1234-5678-90ab-cdef12345678', 'Approximately', 'Około, w przybliżeniu', 'default')
-ON CONFLICT DO NOTHING;
+-- Check if a user with demo@example.com exists and create flashcards for them
+DO $$
+DECLARE
+    demo_user_id UUID;
+BEGIN
+    -- Try to find existing demo user
+    SELECT id INTO demo_user_id 
+    FROM auth.users 
+    WHERE email = 'demo@example.com' 
+    LIMIT 1;
+    
+    -- If demo user exists, create default flashcards
+    IF demo_user_id IS NOT NULL THEN
+        -- Delete existing default flashcards for this user to avoid duplicates
+        DELETE FROM public.flashcards 
+        WHERE user_id = demo_user_id AND source = 'default';
+        
+        -- Insert default flashcards
+        INSERT INTO public.flashcards (user_id, front, back, source) VALUES
+            (demo_user_id, 'Sophisticated', 'Wyrafinowany, skomplikowany', 'default'),
+            (demo_user_id, 'Prevalent', 'Powszechny, rozpowszechniony', 'default'),
+            (demo_user_id, 'Comprehensive', 'Kompleksowy, wyczerpujący', 'default'),
+            (demo_user_id, 'Substantial', 'Znaczny, istotny', 'default'),
+            (demo_user_id, 'Elaborate', 'Rozbudowany, szczegółowy', 'default'),
+            (demo_user_id, 'Inevitable', 'Nieunikniony, nieuchronny', 'default'),
+            (demo_user_id, 'Profound', 'Głęboki, dogłębny', 'default'),
+            (demo_user_id, 'Resilient', 'Odporny, elastyczny', 'default'),
+            (demo_user_id, 'Compelling', 'Przekonujący, porywający', 'default'),
+            (demo_user_id, 'Versatile', 'Wszechstronny, uniwersalny', 'default'),
+            (demo_user_id, 'Feasible', 'Wykonalny, możliwy do zrealizowania', 'default'),
+            (demo_user_id, 'Coherent', 'Spójny, logiczny', 'default'),
+            (demo_user_id, 'Pragmatic', 'Pragmatyczny, praktyczny', 'default'),
+            (demo_user_id, 'Ambiguous', 'Niejednoznaczny, dwuznaczny', 'default'),
+            (demo_user_id, 'Innovative', 'Innowacyjny, nowatorski', 'default'),
+            (demo_user_id, 'Discrepancy', 'Rozbieżność, niezgodność', 'default'),
+            (demo_user_id, 'Hierarchy', 'Hierarchia, porządek', 'default'),
+            (demo_user_id, 'Paradigm', 'Paradygmat, wzorzec', 'default'),
+            (demo_user_id, 'Nevertheless', 'Niemniej jednak, mimo to', 'default'),
+            (demo_user_id, 'Furthermore', 'Ponadto, co więcej', 'default'),
+            (demo_user_id, 'Subsequently', 'Następnie, w dalszej kolejności', 'default'),
+            (demo_user_id, 'Consequently', 'W konsekwencji, w rezultacie', 'default'),
+            (demo_user_id, 'Presumably', 'Prawdopodobnie, przypuszczalnie', 'default'),
+            (demo_user_id, 'Predominantly', 'Przeważnie, głównie', 'default'),
+            (demo_user_id, 'Approximately', 'Około, w przybliżeniu', 'default');
+        
+        RAISE NOTICE 'Created % default flashcards for demo user', 
+            (SELECT COUNT(*) FROM public.flashcards WHERE user_id = demo_user_id AND source = 'default');
+    ELSE
+        RAISE NOTICE 'Demo user (demo@example.com) not found. Default flashcards will be created when user signs up.';
+    END IF;
+END $$;
